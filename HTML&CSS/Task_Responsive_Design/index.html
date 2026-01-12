@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shubham • Creative Developer & Designer</title>
+  <meta name="description" content="Personal portfolio of Shubham — frontend developer from Ahmedabad creating modern, responsive web experiences."/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+
+  <style>
+   
+    :root {
+      --clr-bg:        #ffffff;
+      --clr-text:      #0f172a;
+      --clr-primary:   #6366f1;
+      --clr-primary-d: #4f46e5;
+      --clr-muted:     #64748b;
+      --clr-border:    #e2e8f0;
+      --radius:        1.2rem;
+      --transition:    0.4s cubic-bezier(0.22, 1, 0.36, 1);
+      --fs-base:       clamp(1.1rem, 2.2vw + 1rem, 1.25rem);
+      --fs-h1:         clamp(3.2rem, 7vw + 1rem, 6.5rem);
+      --fs-h2:         clamp(2.2rem, 5vw + 0.8rem, 3.8rem);
+      --fs-h3:         clamp(1.6rem, 3.5vw + 0.6rem, 2.4rem);
+    }
+
+    [data-theme="dark"] {
+      --clr-bg:        #0f172a;
+      --clr-text:      #e2e8f0;
+      --clr-primary:   #a5b4fc;
+      --clr-primary-d: #818cf8;
+      --clr-muted:     #94a3b8;
+      --clr-border:    #334155;
+    }
+
+    @layer base, utilities, components;
+
+    @layer base {
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        font-size: 62.5%;
+      }
+
+      body {
+        font-family: 'Inter', system-ui, sans-serif;
+        background: var(--clr-bg);
+        color: var(--clr-text);
+        font-size: var(--fs-base);
+        line-height: 1.6;
+        min-height: 100dvh;
+        transition: background 0.6s ease, color 0.6s ease;
+      }
+
+      h1, h2, h3 {
+        font-family: 'Playfair Display', serif;
+        line-height: 1.1;
+        font-weight: 800;
+      }
+
+      a { color: var(--clr-primary); text-decoration: none; }
+      a:hover { color: var(--clr-primary-d); text-decoration: underline; }
+
+      img {
+        max-width: 100%;
+        display: block;
+        height: auto;
+        object-fit: cover;
+      }
+    }
+
+    @layer components {
+      .container {
+        width: min(92%, 1400px);
+        margin-inline: auto;
+        padding-inline: 1.5rem;
+      }
+
+      header {
+        position: fixed;
+        inset-block-start: 0;
+        inset-inline: 0;
+        z-index: 100;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        background: color-mix(in srgb, var(--clr-bg) 70%, transparent);
+        border-block-end: 1px solid var(--clr-border);
+        transition: all var(--transition);
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-block: 1.4rem;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2.4rem;
+        font-weight: 500;
+      }
+
+      .theme-toggle {
+        position: relative;
+        width: 48px;
+        height: 26px;
+        background: var(--clr-border);
+        border-radius: 26px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .theme-toggle::before {
+        content: "";
+        position: absolute;
+        inset: 3px;
+        background: var(--clr-bg);
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        transition: transform 0.4s ease;
+      }
+
+      #theme-checkbox:checked + .theme-toggle {
+        background: var(--clr-primary);
+      }
+
+      #theme-checkbox:checked + .theme-toggle::before {
+        transform: translateX(22px);
+      }
+
+      #theme-checkbox {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .hero {
+        min-height: 100dvh;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        padding-block: 12rem 6rem;
+      }
+
+      .hero h1 {
+        font-size: var(--fs-h1);
+        margin-block-end: 1.6rem;
+        background: linear-gradient(90deg, var(--clr-primary), var(--clr-primary-d));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .hero p {
+        font-size: var(--fs-h3);
+        max-width: 60ch;
+        margin: 0 auto 3rem;
+        color: var(--clr-muted);
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 1.2rem 2.8rem;
+        background: var(--clr-primary);
+        color: white;
+        border-radius: var(--radius);
+        font-weight: 600;
+        transition: all var(--transition);
+      }
+
+      .btn:hover {
+        background: var(--clr-primary-d);
+        transform: translateY(-3px);
+        box-shadow: 0 12px 32px color-mix(in srgb, var(--clr-primary) 30%, transparent);
+      }
+
+      section {
+        padding-block: 10rem 8rem;
+      }
+
+      h2 {
+        font-size: var(--fs-h2);
+        text-align: center;
+        margin-block-end: 5rem;
+        position: relative;
+      }
+
+      h2::after {
+        content: "";
+        position: absolute;
+        inset-inline: 50%;
+        transform: translateX(-50%);
+        block-size: 4px;
+        inline-size: 120px;
+        background: var(--clr-primary);
+        border-radius: 2px;
+        bottom: -1.2rem;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        gap: 2.4rem;
+      }
+
+      .card {
+        background: color-mix(in srgb, var(--clr-bg) 60%, var(--clr-border) 40%);
+        border-radius: var(--radius);
+        overflow: hidden;
+        border: 1px solid var(--clr-border);
+        transition: all var(--transition);
+        container-type: inline-size;
+      }
+
+      .card:hover {
+        transform: translateY(-12px);
+        box-shadow: 0 20px 40px color-mix(in srgb, black 12%, transparent);
+      }
+
+      .card-img {
+        aspect-ratio: 4 / 3;
+        overflow: hidden;
+      }
+
+      .card-content {
+        padding: 2rem;
+      }
+
+      .about p {
+        max-width: 70ch;
+        margin: 0 auto;
+        text-align: center;
+        font-size: 1.18rem;
+        color: var(--clr-muted);
+      }
+
+      footer {
+        text-align: center;
+        padding-block: 4rem 6rem;
+        color: var(--clr-muted);
+        border-block-start: 1px solid var(--clr-border);
+      }
+
+      /* Container query example */
+      @container (min-width: 380px) {
+        .card-title {
+          font-size: clamp(1.5rem, 4cqw + 0.8rem, 2rem);
+        }
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links { gap: 1.2rem; font-size: 0.95rem; }
+      .hero { padding-block: 10rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Shubham</div>
+
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#work">Work</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <label class="theme-toggle" for="theme-checkbox">
+          <input type="checkbox" id="theme-checkbox" autocomplete="off"
+                 onchange="document.documentElement.dataset.theme = this.checked ? 'dark' : 'light'">
+        </label>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>Creative Developer</h1>
+        <p>Building modern, responsive, and joyful digital experiences from Ahmedabad, Gujarat.</p>
+        <a href="#work" class="btn">Explore My Work ↓</a>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <h2>About Me</h2>
+        <p>
+          I'm a passionate frontend developer focused on creating fast, accessible, and beautiful interfaces using modern CSS, HTML, and thoughtful design systems. 
+          I love fluid typography, container queries, scroll-driven animations, and turning ideas into pixel-perfect realities.
+          Currently exploring AI-assisted design workflows and next-gen responsive patterns.
+        </p>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="container">
+        <h2>My Work</h2>
+        <div class="grid">
+          <article class="card">
+            <div class="card-img">
+              <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&auto=format&fit=crop" alt="Code editor project">
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Interactive Code Playground</h3>
+              <p>Live HTML/CSS/JS editor with dark mode, resizable panels & localStorage saving.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-img">
+              <img src="https://images.unsplash.com/photo-1551650975-60cb6f9506d0?w=800&auto=format&fit=crop" alt="Dashboard project">
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Analytics Dashboard</h3>
+              <p>Modern SaaS-style interface with bento grids, fluid charts & dark mode support.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-img">
+              <img src="https://images.unsplash.com/photo-1555066931-bf19c90c4449?w=800&auto=format&fit=crop" alt="Portfolio project">
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Personal Branding Site</h3>
+              <p>Minimal portfolio with smooth scroll, container queries & pure CSS theme switch.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <h2>Get in Touch</h2>
+        <p style="text-align:center; max-width:50ch; margin:0 auto 3rem;">
+          I'm currently open to freelance opportunities, interesting collaborations, 
+          and full-time frontend roles. Let's create something awesome together.
+        </p>
+        <div style="text-align:center;">
+          <a href="mailto:shubham@example.com" class="btn">Email Me →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Shubham • Made with modern CSS • <a href="#">Twitter</a> • <a href="#">GitHub</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>

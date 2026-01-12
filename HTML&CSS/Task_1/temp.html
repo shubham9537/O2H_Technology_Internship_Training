@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="temp.css">
+</head>
+<body>
+    <header class="topbar">
+        <h1>CodePlay Ground</h1>
+        <div class="controls">
+            <button id="runBtn">Run</button>
+            <button id="resetBtn">Reset</button>
+            <button id="saveBtn">Save</button>
+            <button id="loadBtn">Load</button>
+            <label class="switch">
+                <input type="checkbox" id="darkToggle"/>
+                <span>Dark</span>
+            </label>
+        </div>
+    </header>
+
+    <main class="workspace">
+        <section class="editors">
+            <div class="panel">
+                <div class="panel-header">HTML</div>
+                <textarea id="htmlCode" spellcheck="false"></textarea>
+            </div>
+            <div class="panel">
+                <div class="panel-header">CSS</div>
+                <textarea id="cssCode" spellcheck="false"></textarea>
+            </div>
+            <div class="panel">
+                <div class="panel-header">JavaScript</div>
+                <textarea id="jsCode" spellcheck="false"></textarea>
+            </div>
+        </section>
+        <div class="resizer" id="resizer" title="Drag to resize preview"></div>
+        <section class="preview">
+            <div class="panel-header"></div>
+            <ifream id=preview" sandbox="allow-scripts allow-same-origin"></ifream>
+        </section>
+    </main>
+
+    <script src="temp.js"></script>
+</body>
+</html>
